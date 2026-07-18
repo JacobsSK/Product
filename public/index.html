@@ -559,8 +559,9 @@ function bindCreate(){
     try{
       const content = await callClaude(
         `Write the full content for a ${createUi.format} titled "${title}" in the ${createUi.mode==='discovery'?createUi.niche:'general'} niche, roughly ${createUi.pages} pages worth of real content. Return ONLY JSON: {"title":"", "sections":[{"heading":"","body":"(200-400 words, specific and actionable, no fluff)"}]}. Aim for 6-10 sections covering a genuinely complete, sellable product — real steps, plans, or frameworks, never placeholder text.`,
-        "You are an expert content creator writing a real, sellable digital product. Output only valid JSON.",
-        true
+       "You are an expert content creator writing a real, sellable digital product. Output only valid JSON.",
+        true,
+        8000
       );
       if(!content || !Array.isArray(content.sections) || content.sections.length===0){
         throw new Error("The AI returned an empty product — try generating again.");
