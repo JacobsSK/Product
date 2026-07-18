@@ -229,10 +229,10 @@ function extractJson(raw){
   return JSON.parse(clean);
 }
 
-async function callClaude(userPrompt, systemPrompt, wantJson){
+async function callClaude(userPrompt, systemPrompt, wantJson, maxTokens){
   const body = {
     model: "claude-sonnet-4-6",
-    max_tokens: 4000,
+    max_tokens: maxTokens || 4000,
     messages: [{role:"user", content: userPrompt}]
   };
   if(systemPrompt) body.system = systemPrompt;
